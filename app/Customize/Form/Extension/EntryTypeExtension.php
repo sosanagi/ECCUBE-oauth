@@ -3,7 +3,7 @@
 namespace Customize\Form\Extension;
 
 use Customize\Security\OAuth2\Client\Provider\Line\Line;
-use Customize\Security\Authenticator\FirebaseJWTAuthenticator;
+// use Customize\Security\Authenticator\FirebaseJWTAuthenticator;
 use Customize\Security\Authenticator\LineAuthenticator;
 use Customize\Security\Authenticator\YahooAuthenticator;
 use Eccube\Entity\Customer;
@@ -47,24 +47,24 @@ class EntryTypeExtension extends AbstractTypeExtension
     {
         $userInfo = $this->getUserInfoFromSession($this->requestStack->getCurrentRequest());
 
-        if($userInfo && $userInfo["provider"] === FirebaseJWTAuthenticator::OAUTH2_PROVIDER) {
-            // メールアドレスをセット
-            $builder
-                ->addEventListener(FormEvents::POST_SET_DATA, function(FormEvent $event) use ($userInfo) {
-                    $form = $event->getForm();
+        // if($userInfo && $userInfo["provider"] === FirebaseJWTAuthenticator::OAUTH2_PROVIDER) {
+        //     // メールアドレスをセット
+        //     $builder
+        //         ->addEventListener(FormEvents::POST_SET_DATA, function(FormEvent $event) use ($userInfo) {
+        //             $form = $event->getForm();
 
-                    $form['email']->setData($userInfo["email"]);
-                });
+        //             $form['email']->setData($userInfo["email"]);
+        //         });
 
-            // Firebaseユーザー識別子をCustomerにセット
-            $builder
-                ->addEventListener(FormEvents::POST_SUBMIT, function(FormEvent $event) use ($userInfo) {
-                    $Customer = $event->getData();
-                    if($Customer instanceof Customer) {
-                        $Customer->setFirebaseUserId($userInfo["userId"]);
-                    }
-                });
-        }
+        //     // Firebaseユーザー識別子をCustomerにセット
+        //     $builder
+        //         ->addEventListener(FormEvents::POST_SUBMIT, function(FormEvent $event) use ($userInfo) {
+        //             $Customer = $event->getData();
+        //             if($Customer instanceof Customer) {
+        //                 $Customer->setFirebaseUserId($userInfo["userId"]);
+        //             }
+        //         });
+        // }
 
         if($userInfo && $userInfo["provider"] === LineAuthenticator::OAUTH2_PROVIDER) {
             // メールアドレスをセット

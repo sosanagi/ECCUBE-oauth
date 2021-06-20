@@ -19,12 +19,12 @@ trait CustomerTrait
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $firebase_uid;
-
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
     private $yahoo_user_id;
+
+    // /**
+    //  * @ORM\Column(type="string", length=255, nullable=true)
+    //  */
+    // private $firebase_uid;
  
     public function getLineUserId(): ?string
     {
@@ -50,15 +50,15 @@ trait CustomerTrait
         return $this;
     }
 
-    public function getFirebaseUserId(): ?string
-    {
-        return $this->firebase_uid;
-    }
+    // public function getFirebaseUserId(): ?string
+    // {
+    //     return $this->firebase_uid;
+    // }
  
-    public function setFirebaseUserId(?string $firebase_uid): self
-    {
-        $this->firebase_uid = $firebase_uid;
+    // public function setFirebaseUserId(?string $firebase_uid): self
+    // {
+    //     $this->firebase_uid = $firebase_uid;
  
-        return $this;
-    }
+    //     return $this;
+    // }
 }

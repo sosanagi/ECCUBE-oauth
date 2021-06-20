@@ -61,10 +61,9 @@ security:
                 target: homepage
             guard:
                 authenticators:
-                    - Customize\Security\Authenticator\FirebaseJWTAuthenticator
                     - Customize\Security\Authenticator\LineAuthenticator
                     - Customize\Security\Authenticator\YahooAuthenticator
-                entry_point: Customize\Security\Authenticator\FirebaseJWTAuthenticator
+                entry_point: Customize\Security\Authenticator\LineAuthenticator
                     
             
 
