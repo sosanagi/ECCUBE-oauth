@@ -61,9 +61,7 @@ security:
                 target: homepage
             guard:
                 authenticators:
-                    - Customize\Security\Authenticator\LineAuthenticator
                     - Customize\Security\Authenticator\YahooAuthenticator
-                entry_point: Customize\Security\Authenticator\LineAuthenticator
                     
             
 

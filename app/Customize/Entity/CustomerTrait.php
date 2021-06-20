@@ -16,10 +16,10 @@ trait CustomerTrait
      */
     private $line_user_id;
 
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $yahoo_user_id;
+    // /**
+    //  * @ORM\Column(type="string", length=255, nullable=true)
+    //  */
+    // private $yahoo_user_id;
 
     // /**
     //  * @ORM\Column(type="string", length=255, nullable=true)
@@ -38,17 +38,17 @@ trait CustomerTrait
         return $this;
     }
 
-    public function getYahooUserId(): ?string
-    {
-        return $this->yahoo_user_id;
-    }
+    // public function getYahooUserId(): ?string
+    // {
+    //     return $this->yahoo_user_id;
+    // }
 
-    public function setYahooUserId(?string $yahoo_user_id): self
-    {
-        $this->yahoo_user_id = $yahoo_user_id;
+    // public function setYahooUserId(?string $yahoo_user_id): self
+    // {
+    //     $this->yahoo_user_id = $yahoo_user_id;
 
-        return $this;
-    }
+    //     return $this;
+    // }
 
     // public function getFirebaseUserId(): ?string
     // {
