@@ -1,0 +1,90 @@
+<script type="text/javascript">
+    // TODO: Replace the following with your app's Firebase project configuration
+    // For Firebase JavaScript SDK v7.20.0 and later, `measurementId` is an optional field
+    var firebaseConfig = {
+        apiKey: "",
+        authDomain: "",
+        projectId: "",
+        storageBucket: "",
+        messagingSenderId: "",
+        appId: "",
+        measurementId: ""
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+
+    const ui = new firebaseui.auth.AuthUI(firebase.auth());
+    const uiConfig = {
+        callbacks: {
+            signInSuccessWithAuthResult: function(authResult, redirectUrl) {
+                var user = authResult.user;
+                if (user) {
+                    // header_check
+                    var myHeader = XMLHttpRequest.getResponseHeader("Content-Type");
+                    console.log(redirectUrl);
+                    console.log(myHeader);
+                    
+                }
+                return false;
+                
+            },
+        },
+        signInFlow: 'redirect',
+        signInSuccessUrl: '/firebase/callback',
+        signInOptions: [
+            firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+            firebase.auth.FacebookAuthProvider.PROVIDER_ID,
+            firebase.auth.TwitterAuthProvider.PROVIDER_ID,
+        ],
+        tosUrl: '/help/agreement',
+        privacyPolicyUrl: '/help/agreement'
+    };
+
+    ui.start('#auth', uiConfig);
+
+    firebase.auth().onAuthStateChanged(user => {
+        if (user) {
+
+            // debug 用 
+            const signOutMessage = `
+                <p>Hello, ${user.displayName}!<\/p>
+                <button type="submit"  onClick="signOut()">サインアウト<\/button>
+            `;
+
+            document.getElementById('auth').innerHTML =  signOutMessage;
+            console.log('ログインしています');
+
+            // redirect
+            firebase.auth().currentUser.getIdToken(true).then(function(idToken) {
+                setTimeout(function(){
+                    redirect(idToken);
+                },5000);
+            });
+            
+        } 
+    });
+
+    // firebaseがid_tokenを持ったままcallbackしてくれれば良いが、
+    //　認証完了時のリダイレクトしかしてくれないので、param持たせてredirect
+    function redirect(idToken){
+        location.href='/firebase/callback?id_token='+idToken;
+    }
+    
+    // debug 用 
+    function signOut() {
+        firebase.auth().onAuthStateChanged(user => {
+            firebase
+            .auth()
+            .signOut()
+            .then(() => {
+                console.log('ログアウトしました');
+                location.reload();
+            })
+            .catch((error) => {
+                console.log(`ログアウト時にエラーが発生しました (${error})`);
+            });
+        });
+    }
+</script>
+
+

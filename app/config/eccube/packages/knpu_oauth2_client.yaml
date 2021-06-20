@@ -1,0 +1,16 @@
+knpu_oauth2_client:
+  clients:
+    line_client:
+      type: generic
+      provider_class: Customize\Security\OAuth2\Client\Provider\Line\Line
+      client_id: ''
+      client_secret: ''
+      redirect_route: line_callback
+    yconnect_client:
+      type: generic
+      provider_class: Customize\Security\OAuth2\Client\Provider\Yahoo\YConnect
+      client_id: ''
+      client_secret: ''
+      redirect_route: yahoo_callback
+
+      
