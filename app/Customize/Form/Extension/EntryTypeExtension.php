@@ -2,10 +2,10 @@
 
 namespace Customize\Form\Extension;
 
-use Customize\Security\OAuth2\Client\Provider\Line\Line;
+// use Customize\Security\OAuth2\Client\Provider\Line\Line;
 use Customize\Security\Authenticator\FirebaseJWTAuthenticator;
-use Customize\Security\Authenticator\LineAuthenticator;
-use Customize\Security\Authenticator\YahooAuthenticator;
+// use Customize\Security\Authenticator\LineAuthenticator;
+// use Customize\Security\Authenticator\YahooAuthenticator;
 use Eccube\Entity\Customer;
 use Eccube\Form\Type\AddressType;
 use Eccube\Form\Type\Front\EntryType;
@@ -66,41 +66,41 @@ class EntryTypeExtension extends AbstractTypeExtension
                 });
         }
 
-        if($userInfo && $userInfo["provider"] === LineAuthenticator::OAUTH2_PROVIDER) {
-            // メールアドレスをセット
-            $builder
-                ->addEventListener(FormEvents::POST_SET_DATA, function(FormEvent $event) use ($userInfo) {
-                    $form = $event->getForm();
+        // if($userInfo && $userInfo["provider"] === LineAuthenticator::OAUTH2_PROVIDER) {
+        //     // メールアドレスをセット
+        //     $builder
+        //         ->addEventListener(FormEvents::POST_SET_DATA, function(FormEvent $event) use ($userInfo) {
+        //             $form = $event->getForm();
 
-                    $form['email']->setData($userInfo["email"]);
-                });
+        //             $form['email']->setData($userInfo["email"]);
+        //         });
 
-            // lineユーザー識別子をCustomerにセット
-            $builder
-                ->addEventListener(FormEvents::POST_SUBMIT, function(FormEvent $event) use ($userInfo) {
-                    $Customer = $event->getData();
-                    if($Customer instanceof Customer) {
-                        $Customer->setLineUserId($userInfo["userId"]);
-                    }
-                });
-        }
+        //     // lineユーザー識別子をCustomerにセット
+        //     $builder
+        //         ->addEventListener(FormEvents::POST_SUBMIT, function(FormEvent $event) use ($userInfo) {
+        //             $Customer = $event->getData();
+        //             if($Customer instanceof Customer) {
+        //                 $Customer->setLineUserId($userInfo["userId"]);
+        //             }
+        //         });
+        // }
 
-        if($userInfo && $userInfo["provider"] === YahooAuthenticator::OAUTH2_PROVIDER) {
-            // メールアドレスをセット
-            $builder ->addEventListener(FormEvents::POST_SET_DATA, function(FormEvent $event) use ($userInfo) {
-                    $form = $event->getForm(); 
-                    $form['email']->setData($userInfo["email"]); 
-                });
+        // if($userInfo && $userInfo["provider"] === YahooAuthenticator::OAUTH2_PROVIDER) {
+        //     // メールアドレスをセット
+        //     $builder ->addEventListener(FormEvents::POST_SET_DATA, function(FormEvent $event) use ($userInfo) {
+        //             $form = $event->getForm(); 
+        //             $form['email']->setData($userInfo["email"]); 
+        //         });
 
-            // ユーザー識別子をCustomerにセット
-            $builder
-                ->addEventListener(FormEvents::POST_SUBMIT, function(FormEvent $event) use ($userInfo) {
-                    $Customer = $event->getData();
-                    if($Customer instanceof Customer) {
-                        $Customer->setYahooUserId($userInfo["sub"]);
-                    }
-                });
-        }
+        //     // ユーザー識別子をCustomerにセット
+        //     $builder
+        //         ->addEventListener(FormEvents::POST_SUBMIT, function(FormEvent $event) use ($userInfo) {
+        //             $Customer = $event->getData();
+        //             if($Customer instanceof Customer) {
+        //                 $Customer->setYahooUserId($userInfo["sub"]);
+        //             }
+        //         });
+        // }
     }
 
     /**
