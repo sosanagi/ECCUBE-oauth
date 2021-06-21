@@ -1,6 +1,5 @@
 <?php
 
-
 namespace Customize\Form\Extension;
 
 use Eccube\Entity\Customer;
