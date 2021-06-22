@@ -25,4 +25,7 @@ scp aws:/var/www/eccube/html/template/default/assets/icon/line.svg ./html/templa
 scp aws:/var/www/eccube/src/Eccube/Resource/template/default/Entry/index.twig  ./src/Eccube/Resource/template/default/Entry/index.twig 
 scp aws:/var/www/eccube/src/Eccube/Resource/template/default/Entry/confirm.twig  ./src/Eccube/Resource/template/default/Entry/confirm.twig
 scp aws:/var/www/eccube/app/Customize/Form/Extension/EntryTypePasswordExtension.php ./app/Customize/Form/Extension/EntryTypePasswordExtension.php
+
+# 退会処理時 Firebase,Yahoo,Lineのuidを削除
+scp aws:/var/www/eccube/src/Eccube/Controller/Admin/Customer/CustomerEditController.php ./src/Eccube/Controller/Admin/Customer/CustomerEditController.php
 ```
