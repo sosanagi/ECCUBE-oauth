@@ -23,5 +23,6 @@ scp aws:/var/www/eccube/html/template/default/assets/icon/line.svg ./html/templa
 
 # @see https://a-zumi.net/eccube4-social-login-no-password/
 scp aws:/var/www/eccube/src/Eccube/Resource/template/default/Entry/index.twig  ./src/Eccube/Resource/template/default/Entry/index.twig 
+scp aws:/var/www/eccube/src/Eccube/Resource/template/default/Entry/confirm.twig  ./src/Eccube/Resource/template/default/Entry/confirm.twig
 scp aws:/var/www/eccube/app/Customize/Form/Extension/EntryTypePasswordExtension.php ./app/Customize/Form/Extension/EntryTypePasswordExtension.php
 ```
