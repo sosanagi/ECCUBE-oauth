@@ -1,0 +1,4 @@
+admin.firebase.title: 'firebaseログイン'
+admin.firebase.sub_title: '設定'
+admin.firebase.delete_user.title:  'Firebase ID 削除'
+admin.firebase.delete_user.label:  '不要になったfirebase_uidを削除します。'

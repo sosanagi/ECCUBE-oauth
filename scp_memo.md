@@ -30,5 +30,13 @@ scp aws:/var/www/eccube/app/Customize/Form/Extension/EntryTypePasswordExtension.
 scp aws:/var/www/eccube/src/Eccube/Controller/Admin/Customer/CustomerEditController.php ./src/Eccube/Controller/Admin/Customer/CustomerEditController.php
 scp aws:/var/www/eccube/src/Eccube/Controller/Mypage/WithdrawController.php ./src/Eccube/Controller/Mypage/WithdrawController.php
 
+# 会員登録時 session削除
 scp aws:/var/www/eccube/app/Customize/EventSubscriber/EntryEventSubscriber.php ./app/Customize/EventSubscriber/EntryEventSubscriber.php
+
+# firebase_uid削除パッチ
+scp aws:/var/www/eccube/app/Customize/Repository/CustomerRepository.php ./app/Customize/Repository/CustomerRepository.php
+scp aws:/var/www/eccube/app/template/admin/config.twig ./app/template/admin/config.twig
+scp aws:/var/www/eccube/app/Customize/Form/Type/Admin/FirebaseType.php ./app/Customize/Form/Type/Admin/FirebaseType.php
+scp aws:/var/www/eccube/app/Customize/Controller/Admin/FirebaseConfigController.php ./app/Customize/Controller/Admin/FirebaseConfigController.php
+scp aws:/var/www/eccube/app/Customize/Resource/locale/messages.ja.yaml ./app/Customize/Resource/locale/messages.ja.yaml
 ```
