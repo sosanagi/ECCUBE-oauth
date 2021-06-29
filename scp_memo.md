@@ -34,9 +34,14 @@ scp aws:/var/www/eccube/src/Eccube/Controller/Mypage/WithdrawController.php ./sr
 scp aws:/var/www/eccube/app/Customize/EventSubscriber/EntryEventSubscriber.php ./app/Customize/EventSubscriber/EntryEventSubscriber.php
 
 # firebase_uid削除パッチ
+# @see https://firebase-php.readthedocs.io/en/latest/user-management.html#list-users
 scp aws:/var/www/eccube/app/Customize/Repository/CustomerRepository.php ./app/Customize/Repository/CustomerRepository.php
 scp aws:/var/www/eccube/app/template/admin/config.twig ./app/template/admin/config.twig
 scp aws:/var/www/eccube/app/Customize/Form/Type/Admin/FirebaseType.php ./app/Customize/Form/Type/Admin/FirebaseType.php
 scp aws:/var/www/eccube/app/Customize/Controller/Admin/FirebaseConfigController.php ./app/Customize/Controller/Admin/FirebaseConfigController.php
 scp aws:/var/www/eccube/app/Customize/Resource/locale/messages.ja.yaml ./app/Customize/Resource/locale/messages.ja.yaml
+
+# firebase UIの改修
+scp aws:/var/www/eccube/app/template/default/Firebase/login_js.twig app/template/default/Firebase/login_js.twig
+
 ```
