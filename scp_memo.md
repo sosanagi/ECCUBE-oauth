@@ -44,4 +44,6 @@ scp aws:/var/www/eccube/app/Customize/Resource/locale/messages.ja.yaml ./app/Cus
 # firebase UIの改修
 scp aws:/var/www/eccube/app/template/default/Firebase/login_js.twig app/template/default/Firebase/login_js.twig
 
+# Firebase Authenticator の修正(UsernamePasswordTokenの発行)
+scp aws:/var/www/eccube/app/Customize/Security/Authenticator/FirebaseJWTAuthenticator.php ./app/Customize/Security/Authenticator/FirebaseJWTAuthenticator.php
 ```

@@ -68,6 +68,15 @@ class FirebaseJWTAuthenticator extends AbstractGuardAuthenticator
     /**
      * {@inheritdoc}
      */
+    public function supports(Request $request)
+    {
+        // return $request->headers->has('Authorization');
+        return $request->attributes->get('_route') === 'firebase_callback';
+    }
+
+    /**
+     * {@inheritdoc}
+     */
     public function start(Request $request, AuthenticationException $authException = null)
     {
         return new RedirectResponse(
@@ -79,18 +88,11 @@ class FirebaseJWTAuthenticator extends AbstractGuardAuthenticator
     /**
      * {@inheritdoc}
      */
-    public function supports(Request $request)
-    {
-        // return $request->headers->has('Authorization');
-        return $request->attributes->get('_route') === 'firebase_callback';
-    }
-
-    /**
-     * {@inheritdoc}
-     */
     public function getCredentials(Request $request)
     {
         // preg_match('/Bearer +(.+)$/', $request->headers->get('Authorization'), $m);
+
+        // log_error(print_r($request->query->get('id_token'),true));
         $idToken = $request->query->get('id_token');
 
         if (empty($idToken)) {
@@ -191,21 +193,21 @@ class FirebaseJWTAuthenticator extends AbstractGuardAuthenticator
         return false;
     }
 
-    // /**
-    //  * EC-CUBEがUsernamePasswordTokenなので合わせる
-    //  *
-    //  * @param UserInterface $user
-    //  * @param string $providerKey
-    //  * @return UsernamePasswordToken|\Symfony\Component\Security\Guard\Token\PostAuthenticationGuardToken
-    //  */
-    // public function createAuthenticatedToken(UserInterface $user, $providerKey)
-    // {
-    //     if ($user instanceof Customer && $providerKey === 'customer') {
-    //         return new UsernamePasswordToken($user, null, $providerKey, ['ROLE_USER']);
-    //     }
+    /**
+     * EC-CUBEがUsernamePasswordTokenなので合わせる
+     *
+     * @param UserInterface $user
+     * @param string $providerKey
+     * @return UsernamePasswordToken|\Symfony\Component\Security\Guard\Token\PostAuthenticationGuardToken
+     */
+    public function createAuthenticatedToken(UserInterface $user, $providerKey)
+    {
+        if ($user instanceof Customer && $providerKey === 'customer') {
+            return new UsernamePasswordToken($user, null, $providerKey, ['ROLE_USER']);
+        }
  
-    //     return parent::createAuthenticatedToken($user, $providerKey);
-    // }
+        return parent::createAuthenticatedToken($user, $providerKey);
+    }
 
 
 }
